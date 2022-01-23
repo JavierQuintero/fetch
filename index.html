@@ -3,7 +3,9 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="" content="">
+
     <style type="text/css" media="all">
+
       body{
         margin: 0;
         height: 100vh;
@@ -11,32 +13,43 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background: #d1b226;
       }
       #name{
         font-size: 2em;
         margin: 0;
         padding: 0;
       }
+
     </style>
+    
     <title>Fetch</title>
   </head>
   <body>
     <img src="" id="poker" height="300"/>
     <p id="name"></p>
+
       <script type="text/javascript">
+
         const $pok =  document.querySelector('#poker')
         const $name =  document.querySelector('#name')
+
+
+        //Funciones
+
         const renderImg = url => {
           $pok.setAttribute('src', url)
         }
         const renderName = mens => {
           $name.textContent = mens
         }
-        
+
+
+        //Peticiones
+
         fetch('pok.json')
         .then((response)=>response.json())
         .then(data=>{
-          //debugger
           //renderImg(data.imag)
         })
         
@@ -47,12 +60,14 @@
           //renderImg(domString)
         })
         
-        fetch('https://pokeapi.co/api/v2/pokemon/149')
+
+        fetch('https://pokeapi.co/api/v2/pokemon/898')
         .then((response)=>response.json())
         .then(data=>{
           renderImg(data.sprites.front_default)
           renderName(data.id+". "+data.species.name)
         })
+
       </script>
   </body>
 </html>
